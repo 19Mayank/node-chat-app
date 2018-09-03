@@ -1,15 +1,9 @@
 
   var socket = io();
+  var user = 'Mayank';
 
   socket.on('connect', function(){
     console.log('connected to server.');
-
-
-    // socket.emit('createMessage', {
-    //   from:'mayank@example.com',
-    //   text:'hi.'
-    // });
-
   });
 
   socket.on('disconnect', function(){
@@ -17,6 +11,10 @@
   });
 
 
-      socket.on('newMessage', (message) => {
-        console.log('new Message for',message);
-      });
+  socket.on('newMessage', (message) => {
+      console.log('new Message for',message);
+    });
+
+  socket.on('welcome', (message) => {
+        console.log(message);
+    });

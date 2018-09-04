@@ -12,7 +12,7 @@
 
 
   socket.on('newMessage', (message) => {
-      console.log('new Message for',message);
+      console.log('new Message',message);
     });
 
   socket.on('welcome', (message) => {

@@ -1,6 +1,5 @@
 
   var socket = io();
-  var user = 'Mayank';
 
   socket.on('connect', function(){
     console.log('connected to server.');
@@ -11,20 +10,22 @@
   });
 
   socket.on('newMessage', (message) => {
-      console.log('new Message',message);
+    var formattedTime = moment(message.createdAt).format('h:mm a');
 
       var li = jQuery('<li></li>');
-      li.text(`${message.from}: ${message.text}`);
+      li.text(`${formattedTime}|  ${message.from}: ${message.text}`);
 
       jQuery('#messages').append(li);
 
     });
 
     socket.on('newLocationMessage', function(message) {
+      var formattedTime = moment(message.createdAt).format('h:mm a');
+
       var li = jQuery('<li></li>');
       var a = jQuery('<a target="_blank">My Current Location</a>');
 
-      li.text(` ${message.from}: `);
+      li.text(`${formattedTime}|   ${message.from}: `);
       a.attr('href', message.url);
       li.append(a);
 
